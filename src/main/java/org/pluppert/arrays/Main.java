@@ -1,11 +1,15 @@
 package org.pluppert.arrays;
 
+import java.sql.Array;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
         // Exercise 1:
-        int[] array = {11, 23, 39, 12, 103, 79, 84};
         /*
+        int[] array = {11, 23, 39, 12, 103, 79, 84};
+
         System.out.println("Numbers in array of int values:");
         for(int number : array) {
             System.out.print(number + " ");
@@ -13,10 +17,20 @@ public class Main {
         */
 
         // Exercise 2:
+        /*
         System.out.println("Index position of number" + " 12 -> " + indexOf(array, array[3]));
+        */
+
+        // Exercise 3:
+        String[] array = new String[]{"Paris", "London", "New York", "Stockholm"};
+        Arrays.sort(array, String.CASE_INSENSITIVE_ORDER);
+        for (String city : array) {
+            System.out.println("city = " + city);
+        }
     }
 
     // Exercise 2:
+    /*
     static int indexOf(int[] array, int elementOfInt) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == elementOfInt) {
@@ -25,4 +39,5 @@ public class Main {
         }
         return -1;
     }
+    */
 }
