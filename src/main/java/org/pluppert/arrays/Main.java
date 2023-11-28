@@ -65,8 +65,14 @@ public class Main {
         */
 
         // Exercise 7:
+        /*
         int[] array = {1, 2, 4, 7, 9, 12, 8, 69, 154, 13};
         printUnevenNumbers(array);
+        */
+
+        // Exercise 8:
+        int[] array = {20, 20, 40, 20, 30, 40, 50, 60, 50};
+        removeDuplicates(array);
 
     }
 
@@ -83,6 +89,7 @@ public class Main {
     */
 
     // Exercise 7:
+    /*
     static void printUnevenNumbers(int[] array) {
         System.out.print("Array: ");
         for (int num : array) {
@@ -96,6 +103,42 @@ public class Main {
             if ((num%2) != 0) {
                 System.out.print(num + " ");
             }
+        }
+    }
+    */
+
+    // Exercise 8:
+    private static void removeDuplicates(int[] array) {
+        int newLength = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    newLength += 1;
+                }
+            }
+        }
+
+        int[] newArray = new int[newLength];
+        int i = 0;
+
+        for (int num : array) {
+            if (Arrays.stream(newArray).noneMatch(value -> value == num)) {
+                newArray[i] = num;
+                i++;
+            }
+        }
+
+        System.out.print("Array: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println();
+
+        System.out.print("Array without duplicate values: ");
+        for (int num : newArray) {
+            System.out.print(num + " ");
         }
     }
 }
