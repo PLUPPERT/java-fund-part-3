@@ -31,12 +31,23 @@ public class Main {
         */
 
         // Exercise 4:
+        /*
         int[] array1 = {1, 15, 20};
         int[] array2 = Arrays.copyOf(array1, array1.length);
         System.out.print("array1: ");
         System.out.println(Arrays.toString(array1));
         System.out.print("array2: ");
         System.out.println(Arrays.toString(array2));
+        */
+
+        // Exercise 5:
+        String[][] array = {
+                {"France", "Paris"},
+                {"Sweden", "Stockholm"}
+        };
+        System.out.println(array[0][0] + " : " + array[0][1]);
+        System.out.println(array[1][0] + " : " + array[1][1]);
+
     }
 
     // Exercise 2:
