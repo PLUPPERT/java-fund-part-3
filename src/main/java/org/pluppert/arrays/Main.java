@@ -52,6 +52,7 @@ public class Main {
         */
 
         // Exercise 6:
+        /*
         int[] array = {43, 5, 23, 17, 2, 14};
         DecimalFormat setFormat = new DecimalFormat("#.0");
         double totalSum = 0;
@@ -61,6 +62,12 @@ public class Main {
         }
 
         System.out.println("Average is: " + setFormat.format(totalSum / array.length));
+        */
+
+        // Exercise 7:
+        int[] array = {1, 2, 4, 7, 9, 12, 8, 69, 154, 13};
+        printUnevenNumbers(array);
+
     }
 
     // Exercise 2:
@@ -74,4 +81,21 @@ public class Main {
         return -1;
     }
     */
+
+    // Exercise 7:
+    static void printUnevenNumbers(int[] array) {
+        System.out.print("Array: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println();
+
+        System.out.print("Odd Array: ");
+        for (int num : array) {
+            if ((num%2) != 0) {
+                System.out.print(num + " ");
+            }
+        }
+    }
 }
