@@ -77,9 +77,14 @@ public class Main {
         */
 
         // Exercise 9:
+        /*
         String[] nameArray = {"Korv", "Kex-Olof", "Bruttan", "Wawaweewa"};
         addName("Burk-Berta", nameArray);
+        */
 
+        // Exercise 10:
+        int[][] multiplicationTable = new int[10][10];
+        showMultiplicationTable(multiplicationTable);
     }
 
     // Exercise 2:
@@ -151,6 +156,7 @@ public class Main {
     */
 
     // Exercise 9:
+    /*
     private static void addName(String name, String[] nameArray) {
         Arrays.sort(nameArray, String.CASE_INSENSITIVE_ORDER);
         System.out.println("nameArray before new name added:");
@@ -161,5 +167,22 @@ public class Main {
         newNameArray[newNameArray.length - 1] = name;
         Arrays.sort(newNameArray, String.CASE_INSENSITIVE_ORDER);
         System.out.println(Arrays.toString(newNameArray));
+    }
+    */
+
+    // Exercise 10:
+    private static void showMultiplicationTable(int[][] multiplicationTable) {
+        String format = "%-6s";
+        for (int i = 0; i < multiplicationTable.length; i++) {
+            for (int j = 0; j < multiplicationTable.length; j++) {
+                multiplicationTable[i][j] = (i + 1) * (j + 1);
+            }
+        }
+        for(int[] row : multiplicationTable) {
+            for (int num : row) {
+                System.out.format(format, num);
+            }
+            System.out.println();
+        }
     }
 }
