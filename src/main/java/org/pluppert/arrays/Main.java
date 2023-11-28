@@ -22,11 +22,21 @@ public class Main {
         */
 
         // Exercise 3:
+        /*
         String[] array = new String[]{"Paris", "London", "New York", "Stockholm"};
         Arrays.sort(array, String.CASE_INSENSITIVE_ORDER);
         for (String city : array) {
             System.out.println("city = " + city);
         }
+        */
+
+        // Exercise 4:
+        int[] array1 = {1, 15, 20};
+        int[] array2 = Arrays.copyOf(array1, array1.length);
+        System.out.print("array1: ");
+        System.out.println(Arrays.toString(array1));
+        System.out.print("array2: ");
+        System.out.println(Arrays.toString(array2));
     }
 
     // Exercise 2:
