@@ -1,6 +1,7 @@
 package org.pluppert.arrays;
 
 import java.sql.Array;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class Main {
@@ -41,13 +42,25 @@ public class Main {
         */
 
         // Exercise 5:
+        /*
         String[][] array = {
                 {"France", "Paris"},
                 {"Sweden", "Stockholm"}
         };
         System.out.println(array[0][0] + " : " + array[0][1]);
         System.out.println(array[1][0] + " : " + array[1][1]);
+        */
 
+        // Exercise 6:
+        int[] array = {43, 5, 23, 17, 2, 14};
+        DecimalFormat setFormat = new DecimalFormat("#.0");
+        double totalSum = 0;
+
+        for (int number : array) {
+            totalSum += number;
+        }
+
+        System.out.println("Average is: " + setFormat.format(totalSum / array.length));
     }
 
     // Exercise 2:
