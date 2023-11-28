@@ -71,8 +71,14 @@ public class Main {
         */
 
         // Exercise 8:
+        /*
         int[] array = {20, 20, 40, 20, 30, 40, 50, 60, 50};
         removeDuplicates(array);
+        */
+
+        // Exercise 9:
+        String[] nameArray = {"Korv", "Kex-Olof", "Bruttan", "Wawaweewa"};
+        addName("Burk-Berta", nameArray);
 
     }
 
@@ -108,6 +114,7 @@ public class Main {
     */
 
     // Exercise 8:
+    /*
     private static void removeDuplicates(int[] array) {
         int newLength = 0;
 
@@ -140,5 +147,19 @@ public class Main {
         for (int num : newArray) {
             System.out.print(num + " ");
         }
+    }
+    */
+
+    // Exercise 9:
+    private static void addName(String name, String[] nameArray) {
+        Arrays.sort(nameArray, String.CASE_INSENSITIVE_ORDER);
+        System.out.println("nameArray before new name added:");
+        System.out.println(Arrays.toString(nameArray));
+        System.out.println();
+        System.out.println("nameArray after adding \"" + name + "\":");
+        String[] newNameArray = Arrays.copyOf(nameArray, nameArray.length + 1);
+        newNameArray[newNameArray.length - 1] = name;
+        Arrays.sort(newNameArray, String.CASE_INSENSITIVE_ORDER);
+        System.out.println(Arrays.toString(newNameArray));
     }
 }
