@@ -3,6 +3,7 @@ package org.pluppert.arrays;
 import java.sql.Array;
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -83,8 +84,13 @@ public class Main {
         */
 
         // Exercise 10:
+        /*
         int[][] multiplicationTable = new int[10][10];
         showMultiplicationTable(multiplicationTable);
+        */
+
+        // Exercise 11:
+        intArrayBuilder();
     }
 
     // Exercise 2:
@@ -171,6 +177,7 @@ public class Main {
     */
 
     // Exercise 10:
+    /*
     private static void showMultiplicationTable(int[][] multiplicationTable) {
         String format = "%-6s";
         for (int i = 0; i < multiplicationTable.length; i++) {
@@ -184,5 +191,47 @@ public class Main {
             }
             System.out.println();
         }
+    }
+    */
+
+    // Exercise 11:
+    private static void intArrayBuilder() {
+        Scanner inputScanner = new Scanner(System.in);
+        int[] intArray = new int[0];
+        boolean keepLooping = true;
+        int arrayLength = 0;
+        int newInt;
+
+        System.out.println("""
+                Build an array of integers by adding numbers.
+                You'll keep on adding numbers until you add the number '84'.
+                Then your array of integers will be complete.
+                """);
+        System.out.print("Add integer > ");
+        while (keepLooping) {
+            if (arrayLength != 0) {
+                System.out.println("(Remember that the number '84' stops the process)");
+                System.out.println("Add next integer > ");
+            }
+            newInt = inputScanner.nextInt();
+            arrayLength++;
+            if (newInt == 84) {
+                keepLooping = false;
+            }
+            intArray = Arrays.copyOf(addInt(newInt, intArray), arrayLength);
+        }
+        System.out.println("You've added '84' to the array and the array is thus completed!");
+        System.out.println("Here's the result:");
+        System.out.println("Your Integer Array -> " + Arrays.toString(intArray));
+    }
+    // Exercise 11:
+    private static int[] addInt(int num, int[] intArray) {
+        Arrays.sort(intArray);
+
+        int[] newIntArray = Arrays.copyOf(intArray, intArray.length + 1);
+        newIntArray[newIntArray.length - 1] = num;
+        Arrays.sort(newIntArray);
+
+        return newIntArray;
     }
 }
