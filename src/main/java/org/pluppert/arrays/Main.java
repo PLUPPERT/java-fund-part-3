@@ -3,6 +3,7 @@ package org.pluppert.arrays;
 import java.sql.Array;
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -95,7 +96,12 @@ public class Main {
         */
 
         // Exercise 12:
+        /*
         printDiagonalOfArray();
+        */
+
+        // Exercise 13:
+        sortByEvenAndUneven();
     }
 
     // Exercise 2:
@@ -245,6 +251,7 @@ public class Main {
     */
 
     // Exercise 12:
+    /*
     static void printDiagonalOfArray() {
         int[][] intArray = {
                 {1, 2, 3},
@@ -255,5 +262,82 @@ public class Main {
         for (int i = 0; i < intArray.length; i++) {
             System.out.print(intArray[i][i] + " ");
         }
+    }
+    */
+
+    // Exercise 13:
+    static void sortByEvenAndUneven() {
+        int[] intArrayRandom = new int[5];
+        int[] intArrayOrdered = new int[5];
+        int[] evens = {};
+        int[] unevens = {};
+        boolean hasUnevenNumber = false;
+        boolean hasEvenNumber = false;
+
+        Random randNum = new Random();
+        int counterEven = 0;
+        int counterUneven = 0;
+
+        for (int i = 0; i < intArrayRandom.length; i++) {
+            intArrayRandom[i] = randNum.nextInt();
+            if ((intArrayRandom[i] % 2) == 0) {
+                hasEvenNumber = true;
+                counterEven++;
+            } else {
+                hasUnevenNumber = true;
+                counterUneven++;
+            }
+        }
+
+        System.out.println();
+        System.out.println("This is the unordered Chaos Array");
+        System.out.println(Arrays.toString(intArrayRandom));
+
+        if (hasUnevenNumber) {
+            unevens = new int[counterUneven];
+            int counter = 0;
+
+            for (int i = 0; i < intArrayRandom.length; i++) {
+                if ((intArrayRandom[i] % 2) != 0) {
+                    unevens[counter] = intArrayRandom[i];
+                    counter++;
+                }
+            }
+            Arrays.sort(unevens);
+
+            if (!hasEvenNumber) {
+                intArrayOrdered = Arrays.copyOf(unevens, unevens.length);
+            }
+        }
+
+        if (hasEvenNumber) {
+            evens = new int[counterEven];
+            int counter = 0;
+
+            for (int i = 0; i < intArrayRandom.length; i++) {
+                if ((intArrayRandom[i] % 2) == 0) {
+                    evens[counter] = intArrayRandom[i];
+                    counter++;
+                }
+            }
+            Arrays.sort(evens);
+
+            if (!hasUnevenNumber) {
+                intArrayOrdered = Arrays.copyOf(evens, evens.length);
+            }
+        }
+
+        if (hasUnevenNumber && hasEvenNumber) {
+            int evenCounter = 0;
+            System.arraycopy(unevens, 0, intArrayOrdered, 0, unevens.length);
+            for (int i = unevens.length; i < intArrayOrdered.length ; i++) {
+                intArrayOrdered[i] = evens[evenCounter];
+                evenCounter++;
+            }
+        }
+
+        System.out.println();
+        System.out.println("Behold the ordered Heavenly Array: ");
+        System.out.println(Arrays.toString(intArrayOrdered));
     }
 }
