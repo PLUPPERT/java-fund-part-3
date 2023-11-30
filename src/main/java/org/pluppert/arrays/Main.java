@@ -1,10 +1,7 @@
 package org.pluppert.arrays;
 
-import java.sql.Array;
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -269,10 +266,10 @@ public class Main {
     static void sortByEvenAndUneven() {
         int[] intArrayRandom = new int[5];
         int[] intArrayOrdered = new int[5];
-        int[] evens = {};
-        int[] unevens = {};
-        boolean hasUnevenNumber = false;
-        boolean hasEvenNumber = false;
+        int[] evenInts = {};
+        int[] unevenInts = {};
+        boolean hasUnevenInts = false;
+        boolean hasEvenInts = false;
 
         Random randNum = new Random();
         int counterEven = 0;
@@ -280,11 +277,11 @@ public class Main {
 
         for (int i = 0; i < intArrayRandom.length; i++) {
             intArrayRandom[i] = randNum.nextInt();
-            if ((intArrayRandom[i] % 2) == 0) {
-                hasEvenNumber = true;
+            if (evenInt(intArrayRandom[i])) {
+                hasEvenInts = true;
                 counterEven++;
             } else {
-                hasUnevenNumber = true;
+                hasUnevenInts = true;
                 counterUneven++;
             }
         }
@@ -293,45 +290,25 @@ public class Main {
         System.out.println("This is the unordered Chaos Array");
         System.out.println(Arrays.toString(intArrayRandom));
 
-        if (hasUnevenNumber) {
-            unevens = new int[counterUneven];
-            int counter = 0;
-
-            for (int i = 0; i < intArrayRandom.length; i++) {
-                if ((intArrayRandom[i] % 2) != 0) {
-                    unevens[counter] = intArrayRandom[i];
-                    counter++;
-                }
-            }
-            Arrays.sort(unevens);
-
-            if (!hasEvenNumber) {
-                intArrayOrdered = Arrays.copyOf(unevens, unevens.length);
+        if (hasUnevenInts) {
+            unevenInts = returnNewArray(intArrayRandom, counterUneven, false);
+            if (!hasEvenInts) {
+                intArrayOrdered = Arrays.copyOf(unevenInts, unevenInts.length);
             }
         }
 
-        if (hasEvenNumber) {
-            evens = new int[counterEven];
-            int counter = 0;
-
-            for (int i = 0; i < intArrayRandom.length; i++) {
-                if ((intArrayRandom[i] % 2) == 0) {
-                    evens[counter] = intArrayRandom[i];
-                    counter++;
-                }
-            }
-            Arrays.sort(evens);
-
-            if (!hasUnevenNumber) {
-                intArrayOrdered = Arrays.copyOf(evens, evens.length);
+        if (hasEvenInts) {
+            evenInts = returnNewArray(intArrayRandom, counterEven, true);
+            if (!hasUnevenInts) {
+                intArrayOrdered = Arrays.copyOf(evenInts, evenInts.length);
             }
         }
 
-        if (hasUnevenNumber && hasEvenNumber) {
+        if (hasUnevenInts && hasEvenInts) {
             int evenCounter = 0;
-            System.arraycopy(unevens, 0, intArrayOrdered, 0, unevens.length);
-            for (int i = unevens.length; i < intArrayOrdered.length ; i++) {
-                intArrayOrdered[i] = evens[evenCounter];
+            System.arraycopy(unevenInts, 0, intArrayOrdered, 0, unevenInts.length);
+            for (int i = unevenInts.length; i < intArrayOrdered.length ; i++) {
+                intArrayOrdered[i] = evenInts[evenCounter];
                 evenCounter++;
             }
         }
@@ -339,5 +316,33 @@ public class Main {
         System.out.println();
         System.out.println("Behold the ordered Heavenly Array: ");
         System.out.println(Arrays.toString(intArrayOrdered));
+    }
+
+    static boolean evenInt(int numInt) {
+        return (numInt % 2) == 0;
+    }
+
+    static int[] returnNewArray(int[] array, int arrayLength, boolean returnEvenInts) {
+        int[] newArray = new int[arrayLength];
+        int counter = 0;
+
+        if (!returnEvenInts) {
+            for (int i = 0; i < array.length; i++) {
+                if (!evenInt(array[i])) {
+                    newArray[counter] = array[i];
+                    counter++;
+                }
+            }
+            Arrays.sort(newArray);
+        } else {
+            for (int i = 0; i < array.length; i++) {
+                if (evenInt(array[i])) {
+                    newArray[counter] = array[i];
+                    counter++;
+                }
+            }
+            Arrays.sort(newArray);
+        }
+        return newArray;
     }
 }
