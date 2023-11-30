@@ -90,7 +90,12 @@ public class Main {
         */
 
         // Exercise 11:
+        /*
         intArrayBuilder();
+        */
+
+        // Exercise 12:
+        printDiagonalOfArray();
     }
 
     // Exercise 2:
@@ -195,6 +200,7 @@ public class Main {
     */
 
     // Exercise 11:
+    /*
     private static void intArrayBuilder() {
         Scanner inputScanner = new Scanner(System.in);
         int[] intArray = new int[0];
@@ -224,7 +230,9 @@ public class Main {
         System.out.println("Here's the result:");
         System.out.println("Your Integer Array -> " + Arrays.toString(intArray));
     }
+    */
     // Exercise 11:
+    /*
     private static int[] addInt(int num, int[] intArray) {
         Arrays.sort(intArray);
 
@@ -233,5 +241,19 @@ public class Main {
         Arrays.sort(newIntArray);
 
         return newIntArray;
+    }
+    */
+
+    // Exercise 12:
+    static void printDiagonalOfArray() {
+        int[][] intArray = {
+                {1, 2, 3},
+                {2, 4, 6},
+                {3, 6, 8}
+        };
+
+        for (int i = 0; i < intArray.length; i++) {
+            System.out.print(intArray[i][i] + " ");
+        }
     }
 }
