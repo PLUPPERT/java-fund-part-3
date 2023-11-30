@@ -270,7 +270,6 @@ public class Main {
         int[] unevenInts = {};
         boolean hasUnevenInts = false;
         boolean hasEvenInts = false;
-
         Random randNum = new Random();
         int counterEven = 0;
         int counterUneven = 0;
@@ -318,26 +317,28 @@ public class Main {
         System.out.println(Arrays.toString(intArrayOrdered));
     }
 
+    // Exercise 13:
     static boolean evenInt(int numInt) {
         return (numInt % 2) == 0;
     }
 
+    // Exercise 13:
     static int[] returnNewArray(int[] array, int arrayLength, boolean returnEvenInts) {
         int[] newArray = new int[arrayLength];
         int counter = 0;
 
         if (!returnEvenInts) {
-            for (int i = 0; i < array.length; i++) {
-                if (!evenInt(array[i])) {
-                    newArray[counter] = array[i];
+            for (int j : array) {
+                if (!evenInt(j)) {
+                    newArray[counter] = j;
                     counter++;
                 }
             }
             Arrays.sort(newArray);
         } else {
-            for (int i = 0; i < array.length; i++) {
-                if (evenInt(array[i])) {
-                    newArray[counter] = array[i];
+            for (int j : array) {
+                if (evenInt(j)) {
+                    newArray[counter] = j;
                     counter++;
                 }
             }
